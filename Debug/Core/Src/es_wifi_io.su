@@ -1,0 +1,16 @@
+../Core/Src/es_wifi_io.c:66:6:HAL_GPIO_EXTI_Callback	16	static
+../Core/Src/es_wifi_io.c:86:6:SPI_WIFI_MspInit	56	static
+../Core/Src/es_wifi_io.c:158:8:SPI_WIFI_Init	24	static
+../Core/Src/es_wifi_io.c:215:8:SPI_WIFI_ResetModule	24	static
+../Core/Src/es_wifi_io.c:251:8:SPI_WIFI_DeInit	8	static
+../Core/Src/es_wifi_io.c:274:5:wait_cmddata_rdy_high	24	static
+../Core/Src/es_wifi_io.c:289:5:wait_cmddata_rdy_rising_event	24	static
+../Core/Src/es_wifi_io.c:306:5:wait_spi_rx_event	24	static
+../Core/Src/es_wifi_io.c:323:5:wait_spi_tx_event	24	static
+../Core/Src/es_wifi_io.c:342:9:SPI_WIFI_ReceiveData	32	static
+../Core/Src/es_wifi_io.c:401:9:SPI_WIFI_SendData	32	static
+../Core/Src/es_wifi_io.c:450:6:SPI_WIFI_Delay	16	static
+../Core/Src/es_wifi_io.c:460:6:SPI_WIFI_DelayUs	32	static
+../Core/Src/es_wifi_io.c:492:6:HAL_SPI_RxCpltCallback	16	static
+../Core/Src/es_wifi_io.c:507:6:HAL_SPI_TxCpltCallback	16	static
+../Core/Src/es_wifi_io.c:522:9:SPI_WIFI_ISR	4	static
