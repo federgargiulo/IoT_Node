@@ -28,6 +28,17 @@
 #ifndef TRANSPORT_INTERFACE_H_
 #define TRANSPORT_INTERFACE_H_
 
+#ifndef MAX_NETWORK_SEND_TRIES
+    #define MAX_NETWORK_SEND_TRIES    3
+#endif
+
+/* An exclusive bound on the times that the NetworkInterfaceReceiveStub will
+ * return an unbound value. At this value and beyond, the
+ * NetworkInterfaceReceiveStub will return zero on every call. */
+#ifndef MAX_NETWORK_RECV_TRIES
+    #define MAX_NETWORK_RECV_TRIES    4
+#endif
+
 #include <stdint.h>
 #include <stddef.h>
 

@@ -156,7 +156,7 @@ int main(void)
 
 
 
-    uint8_t buffer[3];
+    uint8_t buffer[1024];
     pNetworkBuffer.pBuffer = buffer;
     pNetworkBuffer.size = 1024;
 	uint32_t getTimeStampMs();
@@ -171,6 +171,8 @@ int main(void)
 	//    pTransportInterface.pNetworkContext = &someTransportContext;
 //	pTransportInterface.send = networkSend;
 //	pTransportInterface.recv = networkRecv;
+	pTransportInterface.send = networkSend(&pContext,buffer, 1024 );
+	pTransportInterface.recv = networkRecv(&pContext,buffer, 1024 );
 
   MQTTConnectInfo_t pConnectInfo;
   	pConnectInfo.cleanSession = true;
@@ -182,8 +184,8 @@ int main(void)
   	pConnectInfo.pPassword="Salernitana";
   	pConnectInfo.passwordLength=strlen(pConnectInfo.pPassword);
 
-  	mqttstatus = allocateMqttContext(&pContext);
-//  mqttstatus = MQTT_Init(&pContext, &pTransportInterface, getTimeFunction, userCallback, &pNetworkBuffer);
+//  	mqttstatus = allocateMqttContext(&pContext);
+  mqttstatus = MQTT_Init(&pContext, &pTransportInterface, getTimeFunction, userCallback, &pNetworkBuffer);
 
   if(mqttstatus == MQTTSuccess)
   	  printf("\n\n Inizializ fatta \n");

@@ -41,6 +41,8 @@ extern "C" {
 #include "wifi.h"
 #include "core_mqtt.h"
 #include "Cbmc.h"
+#include "transport_interface.h"
+
 
 /* USER CODE END Includes */
 
