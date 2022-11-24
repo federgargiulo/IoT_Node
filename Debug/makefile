@@ -62,8 +62,8 @@ all: main-build
 main-build: Raffaele_in_lab.elf secondary-outputs
 
 # Tool invocations
-Raffaele_in_lab.elf Raffaele_in_lab.map: $(OBJS) $(USER_OBJS) C:\Users\raffa\Desktop\NUOVA-T\Raffaele_in_lab\STM32L475VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Raffaele_in_lab.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\raffa\Desktop\NUOVA-T\Raffaele_in_lab\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Raffaele_in_lab.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Raffaele_in_lab.elf Raffaele_in_lab.map: $(OBJS) $(USER_OBJS) C:\Users\raffa\Documents\GitHub\IoT_Node\STM32L475VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Raffaele_in_lab.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\raffa\Documents\GitHub\IoT_Node\STM32L475VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Raffaele_in_lab.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

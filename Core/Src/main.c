@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <assert.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -154,38 +154,36 @@ int main(void)
     // Clear context.
     memset( ( void * ) &pContext, 0x00, sizeof( MQTTContext_t ) );
 
-    // Set transport interface members.
-//    pTransportInterface.pNetworkContext = &someTransportContext;
-//    pTransportInterface.send = networkSend;
-//    pTransportInterface.recv = networkRecv;
-//
-//    pNetworkBuffer.pBuffer = buffer;
-//    pNetworkBuffer.size = 1024;
-//	uint32_t getTimeStampMs();
+
+
+    uint8_t buffer[3];
+    pNetworkBuffer.pBuffer = buffer;
+    pNetworkBuffer.size = 1024;
+	uint32_t getTimeStampMs();
+
 	// Callback function for receiving packets.
-//	void eventCallback(
-//			MQTTContext_t * pContext,
-//			MQTTPacketInfo_t * pPacketInfo,
-//			MQTTDeserializedInfo_t * pDeserializedInfo
-//	);
+//	void eventCallback(MQTTContext_t * pContext,MQTTPacketInfo_t * pPacketInfo,MQTTDeserializedInfo_t * pDeserializedInfo);
 //	// Network send.
 //	int32_t networkSend( NetworkContext_t * pContext, const void * pBuffer, size_t bytes );
 //	// Network receive.
 //	int32_t networkRecv( NetworkContext_t * pContext, void * pBuffer, size_t bytes );
-
+//	// Set transport interface members.
+	//    pTransportInterface.pNetworkContext = &someTransportContext;
+//	pTransportInterface.send = networkSend;
+//	pTransportInterface.recv = networkRecv;
 
   MQTTConnectInfo_t pConnectInfo;
   	pConnectInfo.cleanSession = true;
   	pConnectInfo.keepAliveSeconds = 60;
-  	pConnectInfo.pClientIdentifier = "clientId-GmC9fVo4dp";
+  	pConnectInfo.pClientIdentifier = "clientId-lDyEumwrr2";
   	pConnectInfo.clientIdentifierLength=strlen(pConnectInfo.pClientIdentifier);
   	pConnectInfo.pUserName = "Michele";
   	pConnectInfo.userNameLength=strlen(pConnectInfo.pUserName);
   	pConnectInfo.pPassword="Salernitana";
   	pConnectInfo.passwordLength=strlen(pConnectInfo.pPassword);
 
-
-  mqttstatus = MQTT_Init(&pContext, &pTransportInterface, getTimeFunction, userCallback, &pNetworkBuffer);
+  	mqttstatus = allocateMqttContext(&pContext);
+//  mqttstatus = MQTT_Init(&pContext, &pTransportInterface, getTimeFunction, userCallback, &pNetworkBuffer);
 
   if(mqttstatus == MQTTSuccess)
   	  printf("\n\n Inizializ fatta \n");

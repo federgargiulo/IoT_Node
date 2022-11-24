@@ -1,0 +1,13 @@
+../Core/Src/mqtt_cbmc_state.c:55:8:mallocCanFail	16	static
+../Core/Src/mqtt_cbmc_state.c:61:20:allocateMqttPacketInfo	16	static
+../Core/Src/mqtt_cbmc_state.c:79:6:isValidMqttPacketInfo	24	static
+../Core/Src/mqtt_cbmc_state.c:93:21:allocateMqttPublishInfo	16	static
+../Core/Src/mqtt_cbmc_state.c:111:6:isValidMqttPublishInfo	24	static
+../Core/Src/mqtt_cbmc_state.c:124:21:allocateMqttConnectInfo	16	static
+../Core/Src/mqtt_cbmc_state.c:144:6:isValidMqttConnectInfo	24	static
+../Core/Src/mqtt_cbmc_state.c:158:21:allocateMqttFixedBuffer	16	static
+../Core/Src/mqtt_cbmc_state.c:174:6:isValidMqttFixedBuffer	24	static
+../Core/Src/mqtt_cbmc_state.c:186:23:allocateMqttSubscriptionList	32	static
+../Core/Src/mqtt_cbmc_state.c:207:6:isValidMqttSubscriptionList	24	static
+../Core/Src/mqtt_cbmc_state.c:223:17:allocateMqttContext	40	static
+../Core/Src/mqtt_cbmc_state.c:270:6:isValidMqttContext	24	static

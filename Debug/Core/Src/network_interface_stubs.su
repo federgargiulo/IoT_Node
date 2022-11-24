@@ -1,0 +1,2 @@
+../Core/Src/network_interface_stubs.c:47:9:NetworkInterfaceReceiveStub	32	static
+../Core/Src/network_interface_stubs.c:78:9:NetworkInterfaceSendStub	32	static
