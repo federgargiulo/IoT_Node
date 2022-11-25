@@ -42,7 +42,7 @@ extern "C" {
 #include "core_mqtt.h"
 #include "Cbmc.h"
 #include "transport_interface.h"
-
+#include "event_callback_stub.h"
 
 /* USER CODE END Includes */
 

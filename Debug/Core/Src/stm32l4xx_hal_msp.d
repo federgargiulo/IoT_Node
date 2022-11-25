@@ -45,7 +45,7 @@ Core/Src/stm32l4xx_hal_msp.o: ../Core/Src/stm32l4xx_hal_msp.c \
  ../Core/Inc/es_wifi_io.h ../Core/Inc/core_mqtt.h \
  ../Core/Inc/core_mqtt_config.h ../Core/Inc/core_mqtt_config_defaults.h \
  ../Core/Inc/core_mqtt_serializer.h ../Core/Inc/transport_interface.h \
- ../Core/Inc/Cbmc.h
+ ../Core/Inc/Cbmc.h ../Core/Inc/event_callback_stub.h
 ../Core/Inc/main.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:
 ../Core/Inc/stm32l4xx_hal_conf.h:
@@ -99,3 +99,4 @@ Core/Src/stm32l4xx_hal_msp.o: ../Core/Src/stm32l4xx_hal_msp.c \
 ../Core/Inc/core_mqtt_serializer.h:
 ../Core/Inc/transport_interface.h:
 ../Core/Inc/Cbmc.h:
+../Core/Inc/event_callback_stub.h:

@@ -18,7 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-
+#include "transport_interface.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <assert.h>
@@ -161,18 +161,11 @@ int main(void)
     pNetworkBuffer.size = 1024;
 	uint32_t getTimeStampMs();
 
-	// Callback function for receiving packets.
-//	void eventCallback(MQTTContext_t * pContext,MQTTPacketInfo_t * pPacketInfo,MQTTDeserializedInfo_t * pDeserializedInfo);
-//	// Network send.
-//	int32_t networkSend( NetworkContext_t * pContext, const void * pBuffer, size_t bytes );
-//	// Network receive.
-//	int32_t networkRecv( NetworkContext_t * pContext, void * pBuffer, size_t bytes );
+
 //	// Set transport interface members.
 	//    pTransportInterface.pNetworkContext = &someTransportContext;
-//	pTransportInterface.send = networkSend;
-//	pTransportInterface.recv = networkRecv;
-	pTransportInterface.send = networkSend(&pContext,buffer, 1024 );
-	pTransportInterface.recv = networkRecv(&pContext,buffer, 1024 );
+	pTransportInterface.send = TransportInterfaceSend(&pContext,buffer, 1024 );
+	pTransportInterface.recv = TransportInterfaceReceive(&pContext,buffer, 1024 );
 
   MQTTConnectInfo_t pConnectInfo;
   	pConnectInfo.cleanSession = true;
@@ -188,9 +181,9 @@ int main(void)
   mqttstatus = MQTT_Init(&pContext, &pTransportInterface, getTimeFunction, userCallback, &pNetworkBuffer);
 
   if(mqttstatus == MQTTSuccess)
-  	  printf("\n\n Inizializ fatta \n");
+  	  printf("\n\n Init Done. \n");
     else
-  	  printf("\n\n Non va manco la init,mamma mia \n");
+  	  printf("\n\n Init NOT Done. \n");
 
   MQTTPublishInfo_t* pWillInfo = NULL;
   uint32_t timeoutMs=100;
@@ -198,12 +191,13 @@ int main(void)
   mqttstatus = MQTT_Connect(&pContext, &pConnectInfo, pWillInfo, timeoutMs, pSessionPresent);
 
   if(mqttstatus == MQTTSuccess)
-	  printf("\n\n Siamo dentro. \n");
+	  printf("\n\n Connect work \n");
   else
-	  printf("\n\n Non va, MQTT HA DETTO STOP \n");
+	  printf("\n\n Connect NOT work \n");
 
   MQTTPublishInfo_t pPublishInfo;
   uint16_t packetId;
+
   // QoS of publish.
   pPublishInfo.qos = MQTTQoS1;
   pPublishInfo.pTopicName = "/some/topic/name";
