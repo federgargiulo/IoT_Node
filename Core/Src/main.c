@@ -82,7 +82,27 @@ static void MEMS_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void userCallback(
+     MQTTContext_t * pContext,
+     MQTTPacketInfo_t * pPacketInfo,
+     MQTTDeserializedInfo_t * pDeserializedInfo
+){
+//	if(pContext!=NULL){
+//		printf("EventCallback pContext is not NULL");
+//		return 0;
+//	}
+//	if(pPacketInfo!=NULL){
+//		printf("EventCallback pPacketInfo is not NULL");
+//		return 0;
+//	  }
+//	if(pDeserializedInfo!=NULL){
+//		printf("EventCallback pDeserializedInfo is not NULL");
+//		return 0;
+//	}
+}
 
+networkSend(){}
+networkRecv(){}
 /* USER CODE END 0 */
 
 /**
@@ -147,7 +167,7 @@ int main(void)
   	MQTTStatus_t mqttstatus;
     TransportInterface_t pTransportInterface;
     MQTTGetCurrentTimeFunc_t getTimeFunction;
-    MQTTEventCallback_t userCallback;
+    //MQTTEventCallback_t userCallback;
     MQTTContext_t pContext;
     MQTTFixedBuffer_t pNetworkBuffer;
 
@@ -164,8 +184,10 @@ int main(void)
 
 //	// Set transport interface members.
 	//    pTransportInterface.pNetworkContext = &someTransportContext;
-	pTransportInterface.send = TransportInterfaceSend(&pContext,buffer, 1024 );
-	pTransportInterface.recv = TransportInterfaceReceive(&pContext,buffer, 1024 );
+//	pTransportInterface.send = TransportInterfaceSend(&pContext,buffer, 1024 );
+//	pTransportInterface.recv = (int) TransportInterfaceReceive(&pContext,buffer, 1024 );
+	pTransportInterface.send = networkSend;
+	pTransportInterface.recv = networkRecv;
 
   MQTTConnectInfo_t pConnectInfo;
   	pConnectInfo.cleanSession = true;
@@ -178,7 +200,7 @@ int main(void)
   	pConnectInfo.passwordLength=strlen(pConnectInfo.pPassword);
 
 //  	mqttstatus = allocateMqttContext(&pContext);
-  mqttstatus = MQTT_Init(&pContext, &pTransportInterface, getTimeFunction, userCallback, &pNetworkBuffer);
+  mqttstatus = MQTT_Init(&pContext, &pTransportInterface, HAL_GetTick, userCallback, &pNetworkBuffer);
 
   if(mqttstatus == MQTTSuccess)
   	  printf("\n\n Init Done. \n");
